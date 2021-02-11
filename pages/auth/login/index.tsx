@@ -1,11 +1,13 @@
 import { AuthLayout } from "app/layouts";
+import { connect } from "react-redux";
 import { Formik } from "formik";
 import Link from "next/link";
 import * as Yup from "yup";
 
 import { Button, Input, Text } from "app/components";
-import { Card, Form } from "./_styles";
+import { Creators } from "app/store/ducks/auth";
 import { LoginFormValues } from "./_types";
+import { Card, Form } from "./_styles";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -17,18 +19,24 @@ const loginSchema = Yup.object().shape({
     .required("Este campo é obrigatório"),
 });
 
-const Login: React.FC = function () {
+const Login: React.FC<any> = function ({ logIn }) {
   const initialValues: LoginFormValues = {
     email: "",
     password: "",
   };
+
+  function handleLogin(data) {
+    logIn(data);
+    console.log("aqui");
+  }
+
   return (
     <AuthLayout>
       <Card>
         <Formik
-          onSubmit={(data) => console.log(data)}
           validationSchema={loginSchema}
           initialValues={initialValues}
+          onSubmit={handleLogin}
         >
           <Form>
             <Text.Title className="mobile-text-center">
@@ -42,9 +50,15 @@ const Login: React.FC = function () {
               name="email"
               label="e-mail"
               placeholder="user.name@mail.com"
+              type="email"
             />
-            <Input name="password" label="senha" placeholder="********" />
-            <Button>Entrar</Button>
+            <Input
+              name="password"
+              label="senha"
+              type="password"
+              placeholder="********"
+            />
+            <Button type="submit">Entrar</Button>
           </Form>
         </Formik>
 
@@ -56,4 +70,10 @@ const Login: React.FC = function () {
   );
 };
 
-export default Login;
+function mapDispatchToProps(dispatch) {
+  return {
+    logIn: (data) => dispatch(Creators.logIn(data)),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Login);

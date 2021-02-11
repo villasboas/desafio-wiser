@@ -3,22 +3,23 @@ import { AuthState } from "./_types";
 import { HYDRATE } from "next-redux-wrapper";
 
 export const INITIAL_STATE: AuthState = {
-  loading: false,
+  fetching: false,
 };
 
-const { Types, Creators } = createActions({
-  logInStarted: [],
-  logInFinished: [],
+export const { Types, Creators } = createActions({
+  logIn: [],
   logInSuccess: ["token"],
   logInFailed: ["error"],
 });
 
-const logInStarted = (state) => state.merge({ loading: true });
-const logInFinished = (state) => state.merge({ loading: false });
+const logIn = (state) => ({ ...state, fetching: true });
+const logInSuccess = (state) => ({ ...state, fetching: false });
+const logInFailed = (state) => ({ ...state, fetching: false });
 const hydrate = (state, action) => action.payload.auth;
 
 export default createReducer(INITIAL_STATE, {
-  [Types.LOG_IN_STARTED]: logInStarted,
-  [Types.LOG_IN_FINISHED]: logInFinished,
+  [Types.LOG_IN]: logIn,
+  [Types.LOG_IN_SUCCESS]: logInSuccess,
+  [Types.LOG_IN_FAILED]: logInFailed,
   [HYDRATE]: hydrate,
 });

@@ -1,10 +1,21 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore, Middleware } from "redux";
 import { createWrapper } from "next-redux-wrapper";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import reducers from "./ducks";
+import createSagaMiddleware from "redux-saga";
+import { authSaga } from "./sagas";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const makeStore = () => {
-  return createStore(reducers, composeWithDevTools());
+  const store = createStore(
+    reducers,
+    composeWithDevTools(applyMiddleware(sagaMiddleware))
+  );
+
+  sagaMiddleware.run(authSaga);
+
+  return store;
 };
 
 // export an assembled wrapper

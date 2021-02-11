@@ -1,3 +1,3 @@
 export interface AuthState {
-  loading: boolean;
+  fetching: boolean;
 }
