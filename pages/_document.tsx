@@ -2,6 +2,13 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 export default class _Document extends Document {
+  /**
+   * getInitialProps
+   *
+   * add styled components to the project
+   *
+   * @param ctx
+   */
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
@@ -28,6 +35,12 @@ export default class _Document extends Document {
     }
   }
 
+  /**
+   * render
+   *
+   * render the default document
+   *
+   */
   render() {
     return (
       <Html>

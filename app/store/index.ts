@@ -7,7 +7,7 @@ import { authSaga } from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
-const makeStore = () => {
+export const makeStore = () => {
   const store = createStore(
     reducers,
     composeWithDevTools(applyMiddleware(sagaMiddleware))

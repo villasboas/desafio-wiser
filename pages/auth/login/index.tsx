@@ -10,6 +10,7 @@ import { Button, Input, Text } from "app/components";
 import { Creators } from "app/store/ducks/auth";
 import { LoginFormValues } from "./_types";
 
+// login form validation schema
 const loginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Digite um e-mail válido")
@@ -26,9 +27,15 @@ const Login: React.FC<any> = function ({ fetching, error, token, logIn }) {
     password: "",
   };
 
+  /**
+   * handleLogin
+   *
+   * handle form submission
+   *
+   * @param param0
+   */
   function handleLogin({ email, password }) {
     logIn(email, password);
-    console.log("aqui");
   }
 
   return (

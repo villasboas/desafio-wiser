@@ -7,6 +7,12 @@ import { InputProps } from "./_types";
 const Input: React.FC<InputProps> = function ({ name, label, ...rest }) {
   const { errors, touched } = useContext(FormikContext);
 
+  /**
+   * hasError
+   *
+   * check if there is an error in this input
+   *
+   */
   const hasError = useMemo(
     function () {
       return errors[name] && touched[name];
