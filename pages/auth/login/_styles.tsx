@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Form as Formik } from "formik";
 
 export const Card = styled.div`
   justify-content: center;
@@ -41,7 +42,7 @@ export const Card = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled(Formik)`
   @media (max-width: 576px) {
     background: #faf5ff;
     border-radius: 8px;
