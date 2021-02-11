@@ -7,7 +7,7 @@ export const INITIAL_STATE: AuthState = {
 };
 
 export const { Types, Creators } = createActions({
-  logIn: [],
+  logIn: ["email", "password"],
   logInSuccess: ["token"],
   logInFailed: ["error"],
 });

@@ -19,14 +19,14 @@ const loginSchema = Yup.object().shape({
     .required("Este campo é obrigatório"),
 });
 
-const Login: React.FC<any> = function ({ logIn }) {
+const Login: React.FC<any> = function ({ fetching, logIn }) {
   const initialValues: LoginFormValues = {
     email: "",
     password: "",
   };
 
-  function handleLogin(data) {
-    logIn(data);
+  function handleLogin({ email, password }) {
+    logIn(email, password);
     console.log("aqui");
   }
 
@@ -58,7 +58,7 @@ const Login: React.FC<any> = function ({ logIn }) {
               type="password"
               placeholder="********"
             />
-            <Button type="submit">Entrar</Button>
+            <Button showSpinner={fetching} type="submit" text="Entrar" />
           </Form>
         </Formik>
 
@@ -70,10 +70,16 @@ const Login: React.FC<any> = function ({ logIn }) {
   );
 };
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
   return {
-    logIn: (data) => dispatch(Creators.logIn(data)),
+    fetching: state.auth.fetching,
   };
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+function mapDispatchToProps(dispatch) {
+  return {
+    logIn: (email, password) => dispatch(Creators.logIn(email, password)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
