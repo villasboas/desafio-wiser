@@ -60,3 +60,29 @@ export const Form = styled(Formik)`
     }
   }
 `;
+
+export const ErrorBag = styled.div`
+  align-items: center;
+  margin-top: 20px;
+  color: #ff377f;
+  font-size: 10px;
+  display: flex;
+
+  .icon {
+    margin-right: 10px;
+    font-size: 26px;
+  }
+`;
+
+export const SuccessBag = styled.div`
+  align-items: center;
+  margin-top: 20px;
+  color: #4f904d;
+  font-size: 10px;
+  display: flex;
+
+  .icon {
+    margin-right: 10px;
+    font-size: 26px;
+  }
+`;

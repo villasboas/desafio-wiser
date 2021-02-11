@@ -1,13 +1,14 @@
+import { BiBadgeCheck, BiErrorAlt } from "react-icons/bi";
 import { AuthLayout } from "app/layouts";
 import { connect } from "react-redux";
 import { Formik } from "formik";
 import Link from "next/link";
 import * as Yup from "yup";
 
+import { Card, ErrorBag, Form, SuccessBag } from "./_styles";
 import { Button, Input, Text } from "app/components";
 import { Creators } from "app/store/ducks/auth";
 import { LoginFormValues } from "./_types";
-import { Card, Form } from "./_styles";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,7 +20,7 @@ const loginSchema = Yup.object().shape({
     .required("Este campo é obrigatório"),
 });
 
-const Login: React.FC<any> = function ({ fetching, logIn }) {
+const Login: React.FC<any> = function ({ fetching, error, token, logIn }) {
   const initialValues: LoginFormValues = {
     email: "",
     password: "",
@@ -58,6 +59,21 @@ const Login: React.FC<any> = function ({ fetching, logIn }) {
               type="password"
               placeholder="********"
             />
+
+            {error && (
+              <ErrorBag>
+                <BiErrorAlt className="icon" />
+                Algo deu errado! Verifique as informações e tente novamente.
+              </ErrorBag>
+            )}
+
+            {token && (
+              <SuccessBag>
+                <BiBadgeCheck className="icon" />
+                Seu login foi efetuado com sucesso!
+              </SuccessBag>
+            )}
+
             <Button showSpinner={fetching} type="submit" text="Entrar" />
           </Form>
         </Formik>
@@ -73,6 +89,8 @@ const Login: React.FC<any> = function ({ fetching, logIn }) {
 function mapStateToProps(state) {
   return {
     fetching: state.auth.fetching,
+    error: state.auth.error,
+    token: state.auth.token,
   };
 }
 

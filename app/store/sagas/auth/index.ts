@@ -1,22 +1,17 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 import { Types } from "app/store/ducks/auth";
+import { authService } from "app/services/api.service";
 
 export function* logIn(action) {
   try {
-    const user = yield call(
-      function (email, password) {
-        return new Promise(function (resolve) {
-          console.log(email, password);
-          setTimeout(() => resolve(true), 5000);
-        });
-      },
+    const { token } = yield call(
+      authService.logIn,
       action.email,
       action.password
     );
-    yield put({ type: Types.LOG_IN_SUCCESS, token: user });
+    yield put({ type: Types.LOG_IN_SUCCESS, token });
   } catch (e) {
-    console.log(e);
-    yield put({ type: Types.LOG_IN_FAILED, message: e.message });
+    yield put({ type: Types.LOG_IN_FAILED, error: "Algo deu errado..." });
   }
 }
 

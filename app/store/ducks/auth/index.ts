@@ -4,6 +4,8 @@ import { HYDRATE } from "next-redux-wrapper";
 
 export const INITIAL_STATE: AuthState = {
   fetching: false,
+  error: null,
+  token: null,
 };
 
 export const { Types, Creators } = createActions({
@@ -13,8 +15,21 @@ export const { Types, Creators } = createActions({
 });
 
 const logIn = (state) => ({ ...state, fetching: true });
-const logInSuccess = (state) => ({ ...state, fetching: false });
-const logInFailed = (state) => ({ ...state, fetching: false });
+
+const logInSuccess = (state, { token }) => ({
+  ...state,
+  token,
+  error: null,
+  fetching: false,
+});
+
+const logInFailed = (state, { error }) => ({
+  ...state,
+  error,
+  token: null,
+  fetching: false,
+});
+
 const hydrate = (state, action) => action.payload.auth;
 
 export default createReducer(INITIAL_STATE, {
