@@ -7,4 +7,10 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
     }
+
+  @media (max-width: 576px) {
+    .mobile-text-center {
+        text-align: center;
+    }
+  }
 `;

@@ -19,9 +19,13 @@ export const Container = styled.div`
 export const Background: any = styled.div`
   background-image: url("/images/gradient.png"), url("/images/background.png");
   background-position: center;
+  background-color: #130525;
   background-size: cover;
 
   @media (max-width: 576px) {
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 100%;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -34,6 +38,7 @@ export const Content = styled.div`
   @media (max-width: 576px) {
     background: transparent;
     position: absolute;
+    display: flex;
     height: 100%;
     width: 100%;
   }

@@ -10,13 +10,52 @@ export const Card = styled.div`
 
   p {
     text-align: center;
+    line-height: 20px;
     margin-top: 48px;
     color: #989fdb;
     font-size: 14px;
+
+    a {
+      color: #989fdb;
+    }
   }
 
   @media (max-width: 768px) {
     max-width: 297px;
     margin: auto;
+  }
+
+  @media (max-width: 576px) {
+    max-width: 311px;
+    margin: auto;
+    height: auto;
+
+    p {
+      margin-top: 50px;
+      color: white;
+
+      a {
+        color: white;
+      }
+    }
+  }
+`;
+
+export const Form = styled.form`
+  @media (max-width: 576px) {
+    background: #faf5ff;
+    border-radius: 8px;
+    position: relative;
+    margin-top: 90px;
+    padding: 28px;
+    padding-bottom: 50px;
+
+    button {
+      left: calc(50% - 84px);
+      position: absolute;
+      box-shadow: none;
+      bottom: -24px;
+      width: 168px;
+    }
   }
 `;
