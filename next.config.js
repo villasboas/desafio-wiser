@@ -9,4 +9,13 @@ module.exports = {
 
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/auth/login",
+        permanent: true,
+      },
+    ];
+  },
 };

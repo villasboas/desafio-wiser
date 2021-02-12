@@ -1,26 +1,29 @@
 # Requisitos
 
-- [] Node 14.10.1
-- [] Yarn 1.22.5
+- [ ] Node 14.10.1
+- [ ] Yarn 1.22.5
 
 # Tecnologias empregadas
 
-- [] React
-- [] Redux
-- [] Redux Saga
-- [] Redux Sauce
-- [] NextJS
-- [] Styled Components
-- [] Axios
+- [ ] React
+- [ ] Redux
+- [ ] Redux Saga
+- [ ] Redux Sauce
+- [ ] NextJS
+- [ ] Styled Components
+- [ ] Axios
 
 # Versão online
 
 A versão online esta disponivel em:
 
+[https://desafio-wiser.vercel.app/](https://desafio-wiser.vercel.app/)
+
 Para logar, utilize o usuário:
 
-email: **_ eve.holt@reqres.in _**
-senha: **_ cityslicka _**
+email: **eve.holt@reqres.in**
+
+senha: **cityslicka**
 
 # Como rodar
 
