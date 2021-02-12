@@ -19,8 +19,8 @@ A versão online esta disponivel em:
 
 Para logar, utilize o usuário:
 
-email:
-senha:
+email: **_ eve.holt@reqres.in _**
+senha: **_ cityslicka _**
 
 # Como rodar
 

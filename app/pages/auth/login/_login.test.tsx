@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { Provider } from "react-redux";
-import Login from "./index";
+import Login from "pages/auth/login";
 import { makeStore } from "app/store";
 
 function Wrapper({ children }) {

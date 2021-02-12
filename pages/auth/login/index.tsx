@@ -5,10 +5,10 @@ import { Formik } from "formik";
 import Link from "next/link";
 import * as Yup from "yup";
 
-import { Card, ErrorBag, Form, SuccessBag } from "./_styles";
+import { Card, ErrorBag, Form, SuccessBag } from "app/pages/auth/login/_styles";
+import { LoginFormValues } from "app/pages/auth/login/_types";
 import { Button, Input, Text } from "app/components";
 import { Creators } from "app/store/ducks/auth";
-import { LoginFormValues } from "./_types";
 
 // login form validation schema
 const loginSchema = Yup.object().shape({
